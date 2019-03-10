@@ -1,0 +1,11 @@
+<%= render 'form', shoot: @shoot %>
+
+<%= image_tag("live_view.mjpg", style: 'height:100%;width:100%;') %>
+
+<script>
+  document.addEventListener("turbolinks:load", function() {
+    const player = new Plyr('#player');
+  });
+</script>
+
+
