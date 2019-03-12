@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190310173022) do
+ActiveRecord::Schema.define(version: 20190311180629) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,17 +23,24 @@ ActiveRecord::Schema.define(version: 20190310173022) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "shoots", force: :cascade do |t|
+  create_table "images", force: :cascade do |t|
+    t.uuid "shoot_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "image_file_name"
+    t.string "image_content_type"
+    t.integer "image_file_size"
+    t.datetime "image_updated_at"
+    t.index ["shoot_id"], name: "index_images_on_shoot_id"
+  end
+
+  create_table "shoots", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "event_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "camera_type"
-    t.string "image1"
-    t.string "image2"
-    t.string "image3"
-    t.string "image4"
     t.index ["event_id"], name: "index_shoots_on_event_id"
   end
 
+  add_foreign_key "images", "shoots"
   add_foreign_key "shoots", "events"
 end

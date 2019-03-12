@@ -1,3 +1,37 @@
 // Place all the styles related to the shoots controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+section.ten_fifteen {
+  width: 10cm;
+  height: 15cm;
+  background: #000000;
+  border: 1px solid #ccc!important;
+}
+
+section.photos {
+  width: 10cm;
+  height: 13.3cm;
+}
+
+.photo-container {
+  width: 160px;
+  height: 240px;
+  float: left;
+  border: 1px solid #DAA520;
+  margin: 13px 13px 0px 13px;
+}
+
+.photo-container img {
+  width: 100%;
+  height: 100%;
+}
+
+.print-title {
+  text-align: center;
+}
+
+
+h2 {
+  color: #FFFFFF;
+}

@@ -1,12 +1,14 @@
-<div class="photo-portrait">
-  <%= image_tag(@shoot.image1, style: 'height:100%;width:100%;') %>
-</div>
-<div class="photo-container">
-  <%= image_tag(@shoot.image2, style: 'height:100%;width:100%;') %>
-</div>
-<div class="photo-container">
-  <%= image_tag(@shoot.image3, style: 'height:100%;width:100%;') %>
-</div>
-<div class="photo-container">
-  <%= image_tag(@shoot.image4, style: 'height:100%;width:100%;') %>
-</div>
+<section class="ten_fifteen">
+  <section class="photos">
+    <% @shoot.images.each do |image| %>
+      <div class="photo-container">
+        <%= image_tag image.image.url(:headshot) %>
+      </div>
+    <% end %>
+  </section>
+  <section class="title">
+    <div class="print-title">
+      <h2>G & T - 20 July 2019</h2>
+    </div>
+  </section>
+</section>

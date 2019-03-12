@@ -36,7 +36,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'ffi-gphoto2'
 gem 'rb-readline'
 gem 'bootstrap'
-gem 'plyr-rails'
+gem "paperclip", "~> 6.0.0"
 
 group :development, :test do
   gem 'pry'

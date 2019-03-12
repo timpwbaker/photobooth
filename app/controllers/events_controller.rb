@@ -2,14 +2,7 @@ require 'gphoto2'
 
 class EventsController < ApplicationController
   def index
-    cameras = GPhoto2::Camera.all
-
-    camera = cameras.first
-    file = camera.capture
-    file.save('/tmp/out.jpg')
-
-    puts file
-    camera.close
+    @events = Event.all
   end
 
   def new
