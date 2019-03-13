@@ -1,0 +1,52 @@
+<style>
+section.ten_fifteen {
+  width: 100%;
+  height: 100%;
+  background: #000000;
+  border: 1px solid #ccc!important;
+}
+
+section.photos {
+  margin: 5mm 0;
+  width: 100%;
+  height: 15cm;
+}
+
+.photo-container {
+  width: 170px;
+  height: 255px;
+  float: left;
+  border: 1px solid #DAA520;
+  margin: 13px 21px 0px 21px;
+}
+
+.photo-container img {
+  width: 100%;
+  height: 100%;
+}
+
+.print-title {
+  text-align: center;
+}
+
+
+h2 {
+  color: #FFFFFF;
+  font-family: 'Buenard', serif;
+}
+</style>
+<section class="ten_fifteen">
+  <section class="photos">
+    <% shoot.images.each do |image| %>
+      <div class="photo-container">
+        <%= pdf_image_tag image.image.url(:headshot) %>
+      </div>
+    <% end %>
+  </section>
+  <section class="title">
+    <div class="print-title">
+      <h2>G & T - 20 July 2019</h2>
+    </div>
+  </section>
+</section>
+

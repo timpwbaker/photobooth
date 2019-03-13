@@ -1,6 +1,11 @@
 require 'gphoto2'
 
 class ShootsController < ApplicationController
+  SIZE = "0"
+
+  def index
+    @shoots = Shoot.where(event: params[:event_id])
+  end
 
   def show
     @shoot = shoot
@@ -18,7 +23,7 @@ class ShootsController < ApplicationController
       cameras = GPhoto2::Camera.all
       camera = cameras.first
     begin
-      (1..4).each do |n|
+      (1..1).each do |n|
         sleep(2)
         file = camera.capture
         location = file.save("app/assets/images/#{image_name(n)}")
@@ -35,7 +40,23 @@ class ShootsController < ApplicationController
     end
 
     if @shoot.save
-      redirect_to event_shoot_path(@shoot.event, @shoot), notice: 'Shoot was successfully created.'
+      path = Rails.root.join('pdfs', "#{@shoot.id}.pdf")
+      pdf = ApplicationController.render(
+        format: :pdf,
+        pdf: "foobarbaz",
+        template: 'shoots/showpdf',
+        :formats => [:html],
+        locals: { shoot: @shoot},
+        :page_height => '187mm',
+        :page_width => '125mm',
+        margin:{top:      "4mm",
+                bottom:   "2mm",
+                left:     "2mm",
+                right:    "2mm" })
+      File.open(path, 'wb') { |file| file.write(pdf) }
+
+
+  redirect_to event_shoot_path(@shoot.event, @shoot), notice: 'Shoot was successfully created.'
     else
       render :new
     end

@@ -1,0 +1,29 @@
+@import "bootstrap";
+
+// Page section elements
+body { @extend .container; }
+
+.row { @extend .row; }
+.half { @extend .col-md-6 }
+
+.alert { @extend .alert }
+.alert-success { @extend .alert-success }
+.alert-danger { @extend .alert-danger }
+
+button.green-button { @extend .btn; @extend .btn-success }
+a.primary-button { @extend .btn; @extend .btn-success }
+a.secondary-button { @extend .btn; @extend .btn-warning }
+input.green-button { @extend .btn; @extend .btn-success }
+button.orange-button { @extend .btn; @extend .btn-warning }
+input.orange-button { @extend .btn; @extend .btn-warning }
+.toggle-real-time { @extend .text-right; }
+
+//Navigation elements
+nav { @extend .navbar; }
+nav a.home { @extend .navbar-brand }
+nav ul.right-side { @extend .nav; @extend .navbar-nav }
+
+// Text elements
+p.strong { @extend .lead; }
+small { @extend .text-muted }
+

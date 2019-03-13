@@ -1,0 +1,3 @@
+<% @shoots.each do |shoot| %>
+  <p><%= link_to shoot.id, event_shoot_path(shoot.event, shoot) %></p>
+<% end %>

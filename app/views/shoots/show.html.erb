@@ -8,7 +8,10 @@
   </section>
   <section class="title">
     <div class="print-title">
-      <h2>G & T - 20 July 2019</h2>
+      <h3>G & T - 20 July 2019</h2>
     </div>
   </section>
 </section>
+<div class="buttons">
+<%= link_to "Print", event_shoot_prints_path(@shoot.event.id, @shoot.id), class: "primary-button" %>
+<%= link_to "Start again", new_event_shoot_path(@shoot.event.id), class: "secondary-button" %>
