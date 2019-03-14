@@ -15,6 +15,6 @@ class PrintsController < ApplicationController
   end
 
   def cmd
-    "lp #{filename}"
+    "lp -o media=\"Postcard.Fullbleed\" #{filename}"
   end
 end

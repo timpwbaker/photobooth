@@ -9,6 +9,42 @@ class ShootsController < ApplicationController
 
   def show
     @shoot = shoot
+    path = Rails.root.join('pdfs', "#{@shoot.id}.pdf")
+    pdf = ApplicationController.render(
+      format: :pdf,
+      pdf: "foobarbaz",
+      template: 'shoots/showpdf',
+      :formats => [:html],
+      show_as_html: params.key?('debug'),
+      locals: { shoot: @shoot},
+      :page_height => '148mm',
+      :page_width => '100mm',
+      javascript_delay: 1,
+      margin:{top:      "0mm",
+              bottom:   "0mm",
+              left:     "0mm",
+              right:    "0mm" })
+    File.open(path, 'wb') { |file| file.write(pdf) }
+
+    respond_to do |format|
+      format.html
+      format.pdf do
+        render pdf: 'file_name',
+          format: :pdf,
+          pdf: "foobarbaz",
+          template: 'shoots/showpdf',
+          :formats => [:html],
+          show_as_html: params.key?('debug'),
+          locals: { shoot: @shoot},
+          :page_height => '148mm',
+          :page_width => '100mm',
+          javascript_delay: 1,
+          margin:{top:      "0mm",
+                  bottom:   "0mm",
+                  left:     "0mm",
+                  right:    "0mm" }
+      end
+    end
   end
 
   def new
@@ -46,13 +82,15 @@ class ShootsController < ApplicationController
         pdf: "foobarbaz",
         template: 'shoots/showpdf',
         :formats => [:html],
+        show_as_html: params.key?('debug'),
         locals: { shoot: @shoot},
-        :page_height => '187mm',
-        :page_width => '125mm',
-        margin:{top:      "4mm",
-                bottom:   "2mm",
-                left:     "2mm",
-                right:    "2mm" })
+        :page_height => '148mm',
+        :page_width => '101mm',
+        javascript_delay: 1,
+        margin:{top:      "0mm",
+                bottom:   "0mm",
+                left:     "0mm",
+                right:    "0mm" })
       File.open(path, 'wb') { |file| file.write(pdf) }
 
 
