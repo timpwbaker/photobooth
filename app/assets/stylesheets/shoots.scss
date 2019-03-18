@@ -2,6 +2,31 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+html {
+  background-image: image-url("background.jpg");
+}
+
+.start-centered {
+  position: fixed; /* or absolute */
+  top: 50%;
+  left: 50%;
+  margin-top: -50px;
+  margin-left: -100px;
+}
+
+form.new_shoot input {
+  width: 200px;
+  height: 100px;
+}
+
+.ten-fifteen-centered {
+  position: fixed; /* or absolute */
+  top: 50%;
+  left: 50%;
+  margin-top: -74mm;
+  margin-left: -52mm;
+}
+
 section.ten_fifteen {
   width: 105mm;
   height: 148mm;
@@ -15,13 +40,25 @@ section.photos {
 }
 
 .buttons {
-  margin-top: 15px;
+  margin-top: 3px;
   width: 105mm;
   height: 30mm;
 }
 
-.buttons a {
-  margin: 0 15px 0 0;
+.buttons .half {
+  width: 50%;
+  float: left;
+}
+
+.buttons .half-left a {
+  width: 40mm;
+  margin-left: 3.5mm;
+  text-align: center;
+}
+
+.buttons .half-right a {
+  width: 40mm;
+  text-align: center;
 }
 
 .photo-container {

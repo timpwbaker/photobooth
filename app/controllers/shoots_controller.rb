@@ -9,22 +9,22 @@ class ShootsController < ApplicationController
 
   def show
     @shoot = shoot
-    path = Rails.root.join('pdfs', "#{@shoot.id}.pdf")
-    pdf = ApplicationController.render(
-      format: :pdf,
-      pdf: "foobarbaz",
-      template: 'shoots/showpdf',
-      :formats => [:html],
-      show_as_html: params.key?('debug'),
-      locals: { shoot: @shoot},
-      :page_height => '148mm',
-      :page_width => '100mm',
-      javascript_delay: 1,
-      margin:{top:      "0mm",
-              bottom:   "0mm",
-              left:     "0mm",
-              right:    "0mm" })
-    File.open(path, 'wb') { |file| file.write(pdf) }
+    # path = Rails.root.join('pdfs', "#{@shoot.id}.pdf")
+    # pdf = ApplicationController.render(
+    #   format: :pdf,
+    #   pdf: "foobarbaz",
+    #   template: 'shoots/showpdf',
+    #   :formats => [:html],
+    #   show_as_html: params.key?('debug'),
+    #   locals: { shoot: @shoot},
+    #   :page_height => '148mm',
+    #   :page_width => '100mm',
+    #   javascript_delay: 1,
+    #   margin:{top:      "0mm",
+    #           bottom:   "0mm",
+    #           left:     "0mm",
+    #           right:    "0mm" })
+    # File.open(path, 'wb') { |file| file.write(pdf) }
 
     respond_to do |format|
       format.html
@@ -59,7 +59,7 @@ class ShootsController < ApplicationController
       cameras = GPhoto2::Camera.all
       camera = cameras.first
     begin
-      (1..1).each do |n|
+      (1..4).each do |n|
         sleep(2)
         file = camera.capture
         location = file.save("app/assets/images/#{image_name(n)}")
