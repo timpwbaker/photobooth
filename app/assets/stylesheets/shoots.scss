@@ -2,47 +2,59 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-html {
+html.image {
   background-image: image-url("background.jpg");
+  background-position: center top;
+  background-repeat: no-repeat;
 }
 
-.start-centered {
+html.red {
+  background-color: red;
+}
+
+.status {
   position: fixed; /* or absolute */
   top: 50%;
   left: 50%;
-  margin-top: -50px;
-  margin-left: -100px;
+  margin-top: -100px;
+  margin-left: -220px;
+  font-size: 160px;
+  color: #ffffff;
 }
 
 form.new_shoot input {
-  width: 200px;
-  height: 100px;
+  width: 440px;
+  height: 200px;
 }
 
 .ten-fifteen-centered {
   position: fixed; /* or absolute */
   top: 50%;
   left: 50%;
-  margin-top: -74mm;
-  margin-left: -52mm;
+  margin-top: -148mm;
+  margin-left: -104mm;
 }
 
 section.ten_fifteen {
-  width: 105mm;
-  height: 148mm;
+  width: 210mm;
+  height: 296mm;
   background: #000000;
   border: 1px solid #ccc!important;
 }
 
 section.photos {
-  width: 105mm;
-  height: 13.5cm;
+  width: 210mm;
+  height: 27cm;
 }
 
 .buttons {
   margin-top: 3px;
-  width: 105mm;
-  height: 30mm;
+  width: 210mm;
+  height: 60mm;
+}
+
+.thirty {
+  font-size: 30px;
 }
 
 .buttons .half {
@@ -51,22 +63,22 @@ section.photos {
 }
 
 .buttons .half-left a {
-  width: 40mm;
+  width: 100mm;
   margin-left: 3.5mm;
   text-align: center;
 }
 
 .buttons .half-right a {
-  width: 40mm;
+  width: 100mm;
   text-align: center;
 }
 
 .photo-container {
-  width: 160px;
-  height: 240px;
+  width: 320px;
+  height: 480px;
   float: left;
-  border: 1px solid #DAA520;
-  margin: 13px 0px 0px 25px;
+  border: 2px solid #DAA520;
+  margin: 26px 0px 0px 50px;
 }
 
 .photo-container img {
@@ -78,7 +90,6 @@ section.photos {
   width: 105mm;
   text-align: center;
 }
-
 
 .print-title h3 {
   color: #FFFFFF;

@@ -4,12 +4,12 @@
 body { @extend .container; }
 
 .row { @extend .row; }
-.half { @extend .col-md-6 }
 
 .alert { @extend .alert }
 .alert-success { @extend .alert-success }
 .alert-danger { @extend .alert-danger }
 
+button.lrg { @extend .btn-lg }
 button.green-button { @extend .btn; @extend .btn-success }
 a.primary-button { @extend .btn; @extend .btn-success }
 a.secondary-button { @extend .btn; @extend .btn-warning }
