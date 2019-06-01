@@ -48,7 +48,7 @@
 </style>
 <section class="postcard-page">
   <section class="photos">
-    <% shoot.images.each do |image| %>
+    <% shoot.images.reverse.each do |image| %>
       <div class="photo-container">
         <%= pdf_image_tag image.image.url(:headshot) %>
       </div>

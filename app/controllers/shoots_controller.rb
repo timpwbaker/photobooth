@@ -38,6 +38,11 @@ class ShootsController < ApplicationController
     @shoot = event.shoots.create
     cameras = GPhoto2::Camera.all
     camera = cameras.first
+    if !camera
+      flash[:notice] = "Could not find camera"
+      redirect_to new_event_shoot_path(@shoot.event.id) and return
+    end
+
 
     begin
       (1..4).each do |n|
@@ -45,11 +50,21 @@ class ShootsController < ApplicationController
         sleep 3
         update_status("")
         sleep 0.2
+        retry_count = 0
         begin
           file = camera.capture
           location = file.save("app/assets/images/#{image_name(n)}")
-        rescue
-          retry
+        rescue => error
+          retry_count += 1
+
+          if retry_count < 3
+            retry
+          end
+
+          puts error.inspect
+          camera.close
+          flash[:notice] = "Could not capture image"
+          redirect_to new_event_shoot_path(@shoot.event.id) and return
         end
       end
 
@@ -87,13 +102,14 @@ class ShootsController < ApplicationController
       File.open(path, 'wb') { |file| file.write(pdf) }
 
 
-  redirect_to event_shoot_path(@shoot.event, @shoot)
+      redirect_to event_shoot_path(@shoot.event, @shoot)
+
     else
       render :new
     end
   end
 
-  def update_status(status)
+  def update_status(status, color)
     ActionCable.server.broadcast(
       "shoot_status_channel",
       status: status
