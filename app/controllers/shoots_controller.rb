@@ -7,9 +7,24 @@ class ShootsController < ApplicationController
 
   def show
     @shoot = shoot
-
     respond_to do |format|
       format.html
+      format.pdf do
+        render(
+          format: :pdf,
+          pdf: "foobarbaz",
+          template: 'shoots/showpdf',
+          :formats => [:html],
+          show_as_html: params.key?('debug'),
+          locals: { shoot: @shoot},
+          :page_height => '156mm',
+          :page_width => '105mm',
+          javascript_delay: 1,
+          margin:{top:      "0mm",
+                  bottom:   "0mm",
+                  left:     "0mm",
+                  right:    "0mm" })
+      end
     end
   end
 
