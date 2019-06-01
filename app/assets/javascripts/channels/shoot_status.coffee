@@ -8,4 +8,6 @@ App.shoot_status = App.cable.subscriptions.create "ShootStatusChannel",
   received: (data) ->
     $("html").addClass("red");
     $("html").removeClass("image");
+    $(".status").removeClass("status-center");
+    $(".status").addClass("status-left");
     $(".status").text(data["status"])

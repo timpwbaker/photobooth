@@ -17,3 +17,8 @@
 /yarn-error.log
 
 .byebug_history
+
+/app/assets/images/*
+/public/system/images/images/*
+/pdfs/*
+.DS_Store

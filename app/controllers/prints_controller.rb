@@ -15,6 +15,6 @@ class PrintsController < ApplicationController
   end
 
   def cmd
-    "lp -o media=\"Postcard.Fullbleed\" #{filename}"
+    "lp -o landscape -o page-border=none -o media=\"Postcard.Fullbleed\" #{filename}"
   end
 end

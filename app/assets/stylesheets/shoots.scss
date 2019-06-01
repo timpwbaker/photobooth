@@ -14,12 +14,21 @@ html.red {
 
 .status {
   position: fixed; /* or absolute */
+  font-size: 160px;
+  color: #ffffff;
+}
+
+.status-center {
   top: 50%;
   left: 50%;
   margin-top: -100px;
   margin-left: -220px;
-  font-size: 160px;
-  color: #ffffff;
+}
+
+.status-left {
+  top: 50%;
+  left: 5%;
+  margin-top: -100px;
 }
 
 form.new_shoot input {

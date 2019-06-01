@@ -21,32 +21,36 @@ class ShootsController < ApplicationController
 
   def create
     @shoot = event.shoots.create
-    # cameras = GPhoto2::Camera.all
-    # camera = cameras.first
-    update_status("Ready")
-    sleep(2)
-
+    cameras = GPhoto2::Camera.all
+    camera = cameras.first
 
     begin
-
       (1..4).each do |n|
         update_status("Ready")
-        sleep(1)
+        sleep 3
         update_status("")
-        sleep(1)
-        # file = camera.capture
-        # update_status("")
-        # location = file.save("app/assets/images/#{image_name(n)}")
-        # persisted = File.open("app/assets/images/#{image_name(n)}")
-        # image = @shoot.images.create
-        # image.image = persisted
-        # image.save
+        sleep 0.2
+        begin
+          file = camera.capture
+          location = file.save("app/assets/images/#{image_name(n)}")
+        rescue
+          retry
+        end
       end
 
-      # camera.close
+      update_status("Processing")
+
+      (1..4).each do |n|
+        persisted = File.open("app/assets/images/#{image_name(n)}")
+        image = @shoot.images.create
+        image.image = persisted
+        image.save
+      end
+
+      camera.close
     rescue => error
-      # puts error.inspect
-      # camera.close
+      puts error.inspect
+      camera.close
     end
 
     if @shoot.save
@@ -58,8 +62,8 @@ class ShootsController < ApplicationController
         :formats => [:html],
         show_as_html: params.key?('debug'),
         locals: { shoot: @shoot},
-        :page_height => '148mm',
-        :page_width => '101mm',
+        :page_height => '156mm',
+        :page_width => '105mm',
         javascript_delay: 1,
         margin:{top:      "0mm",
                 bottom:   "0mm",
