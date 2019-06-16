@@ -36,8 +36,9 @@ class ShootsController < ApplicationController
 
   def create
     @shoot = event.shoots.create
-    cameras = GPhoto2::Camera.all
-    camera = cameras.first
+
+    camera = GPhoto2::Camera.all.first
+
     if !camera
       flash[:notice] = "Could not find camera"
       redirect_to new_event_shoot_path(@shoot.event.id) and return
@@ -55,6 +56,7 @@ class ShootsController < ApplicationController
           file = camera.capture
           location = file.save("app/assets/images/#{image_name(n)}")
         rescue => error
+          puts error
           retry_count += 1
 
           if retry_count < 3
@@ -109,7 +111,7 @@ class ShootsController < ApplicationController
     end
   end
 
-  def update_status(status, color)
+  def update_status(status)
     ActionCable.server.broadcast(
       "shoot_status_channel",
       status: status

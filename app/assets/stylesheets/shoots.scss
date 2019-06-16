@@ -12,6 +12,10 @@ html.red {
   background-color: red;
 }
 
+html.red {
+  background-color: green;
+}
+
 .status {
   position: fixed; /* or absolute */
   font-size: 160px;
@@ -33,7 +37,7 @@ html.red {
 
 form.new_shoot input {
   width: 440px;
-  height: 200px;
+  height: 100px;
 }
 
 .ten-fifteen-centered {

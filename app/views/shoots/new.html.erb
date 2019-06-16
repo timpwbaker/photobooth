@@ -1,6 +1,10 @@
-<%= javascript_include_tag 'cable' %>
-
 <div class="status status-center">
   <%= render 'form', shoot: @shoot %>
 </div>
 
+
+<script>
+  $(document).click(function() {
+    $("form.new_shoot").submit();
+  });
+</script>

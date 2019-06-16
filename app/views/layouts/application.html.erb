@@ -6,6 +6,9 @@
     <link href="https://fonts.googleapis.com/css?family=Buenard" rel="stylesheet">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <% if params[:controller] == "shoots" %>
+      <%= javascript_include_tag 'cable' %>
+    <% end %>
   </head>
 
   <body>
