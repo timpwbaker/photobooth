@@ -27,7 +27,6 @@ group :development, :test do
   gem 'pry'
   gem "launchy"
   gem 'pry-byebug'
-  gem 'launchy'
 
 
   # Adds support for Capybara system testing and selenium driver

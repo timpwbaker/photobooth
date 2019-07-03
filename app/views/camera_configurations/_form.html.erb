@@ -1,0 +1,17 @@
+<%= form_tag("/camera_configurations", method: "post") do %>
+  <%= label_tag(:iso, "Set ISO") %>
+  <%= select_tag(
+    :iso,
+    options_for_select(
+      [
+        ['200', 200],
+        ['400', 400],
+        ['800', 800],
+        ['1600', 1600],
+        ['3200', 3200]
+      ]
+    )
+  ) %>
+
+<p><%= submit_tag("Save") %></p>
+<% end %>

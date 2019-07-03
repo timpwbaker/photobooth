@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   root to: "events#index"
+  resources :camera_configurations, only: [:create, :new]
   resources :events do
     resources :shoots, only: [:index, :new, :create, :show] do
       resources :prints, only: [:index]

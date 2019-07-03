@@ -47,11 +47,11 @@ class ShootsController < ApplicationController
 
     begin
       (1..4).each do |n|
+        retry_count = 0
         update_status("Ready")
         sleep 3
         update_status("")
         sleep 0.2
-        retry_count = 0
         begin
           file = camera.capture
           location = file.save("app/assets/images/#{image_name(n)}")

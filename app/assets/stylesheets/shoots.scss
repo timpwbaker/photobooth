@@ -18,15 +18,32 @@ html.red {
 
 .status {
   position: fixed; /* or absolute */
-  font-size: 160px;
   color: #ffffff;
 }
 
 .status-center {
   top: 50%;
   left: 50%;
+  font-size: 160px;
   margin-top: -100px;
   margin-left: -220px;
+}
+
+.camera-config {
+  top: 50%;
+  left: 50%;
+  font-size: 80px;
+  margin-top: -100px;
+  margin-left: -220px;
+  background-color: black;
+  padding: 20px;
+}
+
+.config-top-right {
+  top: 5%;
+  right: 5%;
+  margin-top: -20px;
+  margin-left: -20px;
 }
 
 .status-left {

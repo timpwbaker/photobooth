@@ -3,12 +3,15 @@ require 'gphoto2'
 class EventsController < ApplicationController
   def index
     @events = Event.all
+
+    if @events.count == 1
+      redirect_to @events.first, notice: 'Redirecting to only event'
+    end
   end
 
   def new
     @event = Event.new
   end
-
 
   def create
     @event = Event.new(event_params)
@@ -21,6 +24,8 @@ class EventsController < ApplicationController
 
   def show
     @event = event
+
+    redirect_to new_event_shoot_path(@event)
   end
 
   private
