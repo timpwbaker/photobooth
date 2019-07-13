@@ -1,8 +1,12 @@
-<div class="status config-top-right">
+<div class="config-top-right">
   <%= link_to("Settings", new_camera_configuration_path) %>
 </div>
 
-<div class="status status-center">
+<div class="secondary-status status-top">
+  <p></p>
+</div>
+
+<div class="status action-text status-center">
   <%= render 'form', shoot: @shoot %>
 </div>
 

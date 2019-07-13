@@ -6,8 +6,12 @@ App.shoot_status = App.cable.subscriptions.create "ShootStatusChannel",
     # Called when the subscription has been terminated by the server
 
   received: (data) ->
-    $("html").addClass("red");
+    $("html").removeClass(data["remove_background"]);
+    $("html").addClass(data["background"]);
     $("html").removeClass("image");
     $(".status").removeClass("status-center");
+    $(".config-top-right").hide();
     $(".status").addClass("status-left");
-    $(".status").text(data["status"])
+    $(".status").css({fontSize: data["font_size"]});
+    $(".status").text(data["status"]);
+    $(".secondary-status").text(data["secondary_status"]);

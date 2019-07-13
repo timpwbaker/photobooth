@@ -46,12 +46,21 @@ class ShootsController < ApplicationController
 
 
     begin
+      update_status("Camera in black square", "⇧", "green", "white", 160)
+      sleep 3
       (1..4).each do |n|
         retry_count = 0
-        update_status("Ready")
-        sleep 3
-        update_status("")
-        sleep 0.2
+        update_status("", "", "green", "white", 160)
+        sleep 1
+        update_status(3, "", "green", "white", 300)
+        sleep 0.5
+        update_status(2, "", "green", "white", 300)
+        sleep 0.5
+        update_status(1, "", "green", "white", 300)
+        sleep 0.5
+        update_status("Pose", "", "green", "white", 300)
+        sleep 0.5
+        update_status("", "", "white", "green", 300)
         begin
           file = camera.capture
           location = file.save("app/assets/images/#{image_name(n)}")
@@ -70,7 +79,7 @@ class ShootsController < ApplicationController
         end
       end
 
-      update_status("Processing")
+      update_status("Processing", "", "green", "white", 160)
 
       (1..4).each do |n|
         persisted = File.open("app/assets/images/#{image_name(n)}")
@@ -111,13 +120,16 @@ class ShootsController < ApplicationController
     end
   end
 
-  def update_status(status)
+  def update_status(status, secondary_status, background, remove_background, font_size)
     ActionCable.server.broadcast(
       "shoot_status_channel",
-      status: status
+      status: status,
+      secondary_status: secondary_status,
+      font_size: font_size,
+      background: background,
+      remove_background: remove_background
     )
   end
-
 
   def image_name(n)
     "#{@shoot.id}_#{n}.jpg"

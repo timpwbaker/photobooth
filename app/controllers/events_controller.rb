@@ -5,7 +5,7 @@ class EventsController < ApplicationController
     @events = Event.all
 
     if @events.count == 1
-      redirect_to @events.first, notice: 'Redirecting to only event'
+      redirect_to @events.first
     end
   end
 
